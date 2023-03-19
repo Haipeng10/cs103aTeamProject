@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Coding Helper</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
   <style>
     body {
         background-image: url(https://wallpaperaccess.com/full/629055.jpg);
@@ -37,21 +37,20 @@
 </head>
 <body>
   <div class="container my-5">
-    <h1 class="display-4 my-title"><b>GPT-Based Coding Helper</b></h1>
+    <h1 class="display-4 my-title"><b>Analyze the runtime of your code</b></h1>
     <p>
-        The <b>Coding Helper</b> is designed to provide users with four useful functionalities while coding.
-        <br>
+        Type your code below to analyze runtime.
     </p>
-    <div class="row my-5">
-      <div class="col-md-6 offset-md-3">
-        <a href="#" class="d-block my-3 my-subtitle">Code Refactoring</a>
-        <a href="#" class="d-block my-3 my-subtitle">Code Commenting</a>
-        <a href="#" class="d-block my-3 my-subtitle">Analyze Runtime</a>
-        <a href="#" class="d-block my-3 my-subtitle">Language Conversion</a>
-      </div>
-    </div>
+    <form action="/runtime" method="post">
+        <div class="mb-3">
+            <label for="code" class="form-label">Code:</label>
+            <textarea type="text" class="form-control" id="code" aria-describedby="code" rows="10"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
   </div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script>
+  <!-- import Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <p>Copyright©2023</p>
 </body>
 </html>

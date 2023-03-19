@@ -22,7 +22,7 @@ from flask import request,redirect,url_for,Flask,render_template
 from gpt import GPT
 import os
 
-app = Flask(__name__, template_folder="views")
+app = Flask(__name__, template_folder="templates")
 gptAPI = GPT(os.environ.get('APIKEY'))
 
 # Set the secret key to some random bytes. Keep this really secret!
@@ -34,7 +34,24 @@ def index():
     print('processing / route')
     return render_template('index.html')
 
+@app.route('/about')
+def about():
+    ''' display a link to the about page '''
+    print('processing / route')
+    return render_template('about.html')
 
+@app.route('/conversion', methods=['GET', 'POST'])
+def conversion():
+    ''' handle a get request by sending a form 
+        and a post request by returning the GPT response
+    '''
+    if request.method == 'POST':
+        prompt = "Convert the following code to " + request.form['target_language'] + "\n\n" + request.form['code']
+        answer = gptAPI.getResponse(prompt)
+        return render_template('conversion_response.html', answer=answer)
+    else:
+        return render_template('conversion.html')
+    
 @app.route('/gptdemo', methods=['GET', 'POST'])
 def gptdemo():
     ''' handle a get request by sending a form 

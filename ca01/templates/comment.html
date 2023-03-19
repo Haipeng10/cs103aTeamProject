@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coding Helper</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+  <style>
+    body {
+        background-image: url(https://wallpaperaccess.com/full/629055.jpg);
+    }
+    .container {
+        max-width: 800px;
+    }
+    .my-title {
+      color:#333;
+      text-shadow: 3ch;
+      text-align: center;
+      outline: 3px solid #007bff;
+      padding: 10px;
+      background-color: transparent;
+    }
+    .my-subtitle {
+      color:#333;
+      font-size: 1.6em;
+      text-align: center;
+      border: 2.5px solid #007bff;
+      padding: 10px;
+      background-color: transparent;
+    }
+
+    p {
+        text-align: center;
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="container my-5">
+    <h1 class="display-4 my-title"><b>Add comments to your code</b></h1>
+    <p>
+        Type your code below to add comments.
+    </p>
+    <form action="/comment" method="post">
+        <div class="mb-3">
+            <label for="code" class="form-label">Code:</label>
+            <textarea type="text" class="form-control" id="code" aria-describedby="code" rows="10"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <!-- import Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <p>Copyright©2023</p>
+</body>
+</html>

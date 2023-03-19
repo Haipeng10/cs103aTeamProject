@@ -64,6 +64,24 @@ class GPT():
             return "Your code is perfect!"
         return response
 
+    def addComments(self, code):
+        '''
+        Add comments to the code.
+        Return the commented code.
+        '''
+        prefix = "Add comments to below code: (just show me the code with comments, no extra words)\n"
+        completion = openai.Completion.create(
+            engine=self.model_engine,
+            prompt=prefix + code,
+            max_tokens=1024,
+            n=1,
+            stop=None,
+            temperature=0.8,
+        )
+
+        response = completion.choices[0].text
+        return response
+
 if __name__=='__main__':
     '''
     '''

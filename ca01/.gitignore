@@ -1,2 +1,3 @@
 .env
 secret.sh
+.DS_Store
