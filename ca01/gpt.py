@@ -81,6 +81,23 @@ class GPT():
 
         response = completion.choices[0].text
         return response
+    
+    def getResponseForTimeComplexity(self,prompt):
+        ''' 
+        return the time complexity of the input code
+        '''
+        prefix = 'What is time complexity of the following codes: \n'
+        completion = openai.Completion.create(
+            engine=self.model_engine,
+            prompt=prefix + prompt,
+            max_tokens=1024,
+            n=1,
+            stop=None,
+            temperature=0.8,
+        )
+
+        response = completion.choices[0].text
+        return response
 
 if __name__=='__main__':
     '''

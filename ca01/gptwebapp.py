@@ -51,6 +51,20 @@ def conversion():
         return render_template('conversion_response.html', answer=answer)
     else:
         return render_template('conversion.html')
+
+'''time complexity'''
+@app.route('/runtime', methods=['GET', 'POST'])
+def runtime():
+    ''' handle a get request by sending a form 
+        and a post request by returning the GPT response
+    '''
+    if request.method == 'POST':
+        prompt = "What is time complexity of the following codes: \n " +  request.form['code']
+        answer = gptAPI.getResponse(prompt)
+        return render_template('conversion_response.html', answer=answer)
+    else:
+        return render_template('runtime.html')  
+
     
 @app.route('/gptdemo', methods=['GET', 'POST'])
 def gptdemo():
