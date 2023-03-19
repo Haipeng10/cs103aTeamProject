@@ -44,6 +44,25 @@ class GPT():
 
         response = completion.choices[0].text
         return response
+    
+    def rewriteCode(self, code):
+        '''
+        Refactor this code to make it work the same way as the original code.
+        '''
+        task = "Help me convert the code in another way, but does the same thing! (just show me the code with comments, no extra words)\n"
+        completion = openai.Completion.create(
+            engine=self.model_engine,
+            prompt=task+code,
+            max_tokens=1024,
+            n=1,
+            stop=None,
+            temperature=0.8,
+        )
+
+        response = completion.choices[0].text
+        if response == "No" or "No" in response:
+            return "Your code is perfect!"
+        return response
 
 if __name__=='__main__':
     '''
