@@ -31,14 +31,32 @@ app.secret_key = b'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'
 @app.route('/')
 def index():
     ''' display a link to the general query page '''
-    print('processing / route')
     return render_template('index.html')
 
 @app.route('/about')
 def about():
     ''' display a link to the about page '''
-    print('processing / route')
     return render_template('about.html')
+
+@app.route('/comment')
+def comment():
+    ''' display a link to the about page '''
+    return render_template('comment.html')
+
+@app.route('/team')
+def team():
+    ''' display a link to the about page '''
+    return render_template('team.html')
+
+@app.route('/runtime')
+def runtime():
+    ''' display a link to the about page '''
+    return render_template('runtime.html')
+
+@app.route('/refactor')
+def refactor():
+    ''' display a link to the about page '''
+    return render_template('refactor.html')
 
 @app.route('/conversion', methods=['GET', 'POST'])
 def conversion():
