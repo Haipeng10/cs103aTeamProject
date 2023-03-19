@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Coding Helper</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
   <style>
     body {
         background-image: url(https://wallpaperaccess.com/full/629055.jpg);
@@ -45,6 +45,26 @@
     
   </style>
 </head>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">Coding Helper</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/team">Team</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
 <body>
 
     <div class="container my-5">
@@ -58,7 +78,7 @@
         
           <div class="col-sm-6 col-lg-6 mb-3">
             <div class="card">
-              <img src="https://i.imgur.com/NgsisqX.jpg" class="card-image" alt="Member 1">
+              <img src="{{ url_for('static', filename='zhp.jpeg') }}" class="card-image" alt="Member 1">
               <div class="card-body">
                 <h5 class="card-title">Haipeng Zhu</h5>
                 <p class="card-text">MSCS 24' student
@@ -72,7 +92,7 @@
           
           <div class="col-sm-6 col-lg-6 mb-3">
             <div class="card">
-              <img src="https://scontent-bos5-1.xx.fbcdn.net/v/t39.30808-6/329182054_556041586481607_1813099318887707343_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=QUicWB7EGpIAX9oDCo1&_nc_ht=scontent-bos5-1.xx&oh=00_AfCNlBd7XqnJcUMHnQTmBDa_DPnkbnsxZgj41gGRUNdvng&oe=641C253E" class="card-image" alt="Member 2">
+              <img src="{{ url_for('static', filename='wyx.png') }}" class="card-image" alt="Member 2">
               <div class="card-body">
                 <h5 class="card-title">Yuxiang wan</h5>
                 <p class="card-text">MSCS 24' student
@@ -90,7 +110,7 @@
         
           <div class="col-sm-6 col-lg-6 mb-3">
             <div class="card">
-              <img src="https://media.licdn.com/dms/image/D4D03AQETnLqUdOSB0g/profile-displayphoto-shrink_800_800/0/1664983200625?e=1684972800&v=beta&t=G7Qr-Cqd4sTAnWKlp1s_KQCApuAWm8PqLeMzagABeQg" class="card-image" alt="Member 3">
+              <img src="{{ url_for('static', filename='dyh.jpeg') }}" class="card-image" alt="Member 3">
               <div class="card-body">
                 <h5 class="card-title">Yuanhuan Deng</h5>
                 <p class="card-text">MSCS 24' student
@@ -104,7 +124,7 @@
           
           <div class="col-sm-6 col-lg-6 mb-3">
             <div class="card">
-                <img  src="https://i.imgur.com/V6F1tJ8.jpg" class="card-image" alt="Member 3">
+                <img  src="{{ url_for('static', filename='yh.jpeg') }}" class="card-image" alt="Member 3">
                 <div class="card-body">
                   <h5 class="card-title">Hang Yu</h5>
                   <p class="card-text">MSCS 24' student
@@ -119,7 +139,7 @@
       </div>
             
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   <p>Copyright©2023</p>
 </body>
 </html>

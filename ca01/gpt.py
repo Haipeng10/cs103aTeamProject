@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''
 Demo code for interacting with GPT-3 in Python.
 
@@ -45,11 +46,11 @@ class GPT():
         response = completion.choices[0].text
         return response
     
-    def rewriteCode(self, code):
+    def refactor(self, code):
         '''
         Refactor this code to make it work the same way as the original code.
         '''
-        task = "Help me convert the code in another way, but does the same thing! (just show me the code with comments, no extra words)\n"
+        task = 'Help me convert the code in another way, but does the same thing! (just show me the code with comments, no extra words)\n'
         completion = openai.Completion.create(
             engine=self.model_engine,
             prompt=task+code,
@@ -60,16 +61,14 @@ class GPT():
         )
 
         response = completion.choices[0].text
-        if response == "No" or "No" in response:
-            return "Your code is perfect!"
         return response
 
-    def addComments(self, code):
+    def comment(self, code):
         '''
         Add comments to the code.
         Return the commented code.
         '''
-        prefix = "Add comments to below code: (just show me the code with comments, no extra words)\n"
+        prefix = 'Add comments to below code: (just show me the code with comments, no extra words)\n'
         completion = openai.Completion.create(
             engine=self.model_engine,
             prompt=prefix + code,
@@ -103,5 +102,5 @@ if __name__=='__main__':
     '''
     '''
     import os
-    g = GPT(os.environ.get("APIKEY"))
+    g = GPT()
     print(g.getResponse("what does openai's GPT stand for?"))
