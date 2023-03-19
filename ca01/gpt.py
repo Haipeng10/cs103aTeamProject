@@ -60,8 +60,6 @@ class GPT():
         )
 
         response = completion.choices[0].text
-        if response == "No" or "No" in response:
-            return "Your code is perfect!"
         return response
 
     def addComments(self, code):
