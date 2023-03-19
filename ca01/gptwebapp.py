@@ -26,7 +26,7 @@ app = Flask(__name__, template_folder="templates")
 gptAPI = GPT(os.environ.get('APIKEY'))
 
 # Set the secret key to some random bytes. Keep this really secret!
-app.secret_key = b'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'
+app.secret_key = b'xxxxxx'
 
 @app.route('/')
 def index():
@@ -69,6 +69,21 @@ def conversion():
         return render_template('conversion_response.html', answer=answer)
     else:
         return render_template('conversion.html')
+
+'''time complexity'''
+@app.route('/runtime', methods=['GET', 'POST'])
+def runtime():
+    ''' handle a get request by sending a form 
+        and a post request by returning the GPT response
+    '''
+    if request.method == 'POST':
+        # prompt = "What is time complexity of the following codes: \n " +  request.form['code']
+        prompt = request.form['code']
+        answer = gptAPI.getResponseForTimeComplexity(prompt)
+        return render_template('conversion_response.html', answer=answer)
+    else:
+        return render_template('runtime.html')  
+
     
 @app.route('/gptdemo', methods=['GET', 'POST'])
 def gptdemo():
