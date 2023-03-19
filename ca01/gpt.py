@@ -45,7 +45,7 @@ class GPT():
         response = completion.choices[0].text
         return response
     
-    def rewriteCode(self, code):
+    def refactor(self, code):
         '''
         Refactor this code to make it work the same way as the original code.
         '''
@@ -62,7 +62,7 @@ class GPT():
         response = completion.choices[0].text
         return response
 
-    def addComments(self, code):
+    def comment(self, code):
         '''
         Add comments to the code.
         Return the commented code.
@@ -101,5 +101,5 @@ if __name__=='__main__':
     '''
     '''
     import os
-    g = GPT(os.environ.get("APIKEY"))
+    g = GPT()
     print(g.getResponse("what does openai's GPT stand for?"))
