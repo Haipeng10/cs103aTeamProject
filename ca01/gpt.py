@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''
 Demo code for interacting with GPT-3 in Python.
 
@@ -49,7 +50,7 @@ class GPT():
         '''
         Refactor this code to make it work the same way as the original code.
         '''
-        task = "Help me convert the code in another way, but does the same thing! (just show me the code with comments, no extra words)\n"
+        task = 'Help me convert the code in another way, but does the same thing! (just show me the code with comments, no extra words)\n'
         completion = openai.Completion.create(
             engine=self.model_engine,
             prompt=task+code,
@@ -67,7 +68,7 @@ class GPT():
         Add comments to the code.
         Return the commented code.
         '''
-        prefix = "Add comments to below code: (just show me the code with comments, no extra words)\n"
+        prefix = 'Add comments to below code: (just show me the code with comments, no extra words)\n'
         completion = openai.Completion.create(
             engine=self.model_engine,
             prompt=prefix + code,

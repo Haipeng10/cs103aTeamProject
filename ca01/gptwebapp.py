@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 '''
 gptwebapp shows how to create a web app which ask the user for a prompt
 and then sends it to openai's GPT API to get a response. You can use this
@@ -22,6 +22,12 @@ On Windows:
 from flask import request, redirect, url_for, Flask, render_template
 from gpt import GPT
 import os
+
+
+app = Flask(__name__, static_url_path='/static', static_folder='static', template_folder="templates")
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.config['JSON_AS_ASCII'] = False
+app.config['JSONIFY_MIMETYPE'] = 'application/json;charset=utf-8'
 
 app = Flask(__name__, template_folder="templates")
 gptAPI = GPT(os.environ.get('APIKEY'))
