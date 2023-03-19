@@ -60,6 +60,7 @@ def runtime():
     '''
     if request.method == 'POST':
         # prompt = "What is time complexity of the following codes: \n " +  request.form['code']
+        # answer = gptAPI.getResponse(prompt)
         prompt = request.form['code']
         answer = gptAPI.getResponseForTimeComplexity(prompt)
         return render_template('conversion_response.html', answer=answer)
