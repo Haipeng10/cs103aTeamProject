@@ -54,7 +54,7 @@ def team():
     return render_template('team.html')
 
 
-'''time complexity'''
+#time complexity
 @app.route('/runtime', methods=['GET', 'POST'])
 def runtime():
     ''' handle a get request by sending a form 
@@ -62,10 +62,9 @@ def runtime():
     '''
     if request.method == 'POST':
         prompt = request.form['code']
-        answer = gptAPI.getResponseForTimeComplexity(prompt)
-        return render_template('conversion_response.html', answer=answer)
-    else:
-        return render_template('runtime.html')
+        answer = gptAPI.get_response_for_time_complexity(prompt)
+        return render_template('response.html', answer=answer)
+    return render_template('runtime.html')
 
 
 @app.route('/refactor', methods=['GET', 'POST'])
@@ -76,9 +75,8 @@ def refactor():
     if request.method == 'POST':
         prompt = request.form['code']
         answer = gptAPI.refactor(prompt)
-        return render_template('conversion_response.html', answer=answer)
-    else:
-        return render_template('refactor.html')
+        return render_template('response.html', answer=answer)
+    return render_template('refactor.html')
 
 @app.route('/comment', methods=['GET', 'POST'])
 def comment():
@@ -88,9 +86,8 @@ def comment():
     if request.method == 'POST':
         prompt = request.form['code']
         answer = gptAPI.comment(prompt)
-        return render_template('conversion_response.html', answer=answer)
-    else:
-        return render_template('comment.html')
+        return render_template('response.html', answer=answer)
+    return render_template('comment.html')
 
 @app.route('/conversion', methods=['GET', 'POST'])
 def conversion():
@@ -98,41 +95,12 @@ def conversion():
         and a post request by returning the GPT response
     '''
     if request.method == 'POST':
-        prompt = "Convert the following code to " + \
-            request.form['target_language'] + "\n\n" + request.form['code']
-        answer = gptAPI.getResponse(prompt)
-        return render_template('conversion_response.html', answer=answer)
-    else:
-        return render_template('conversion.html')
+        target = request.form['target_language']
+        code = request.form['code']
+        answer = gptAPI.change_code_language(target, code)
+        return render_template('response.html', answer=answer)
+    return render_template('conversion.html')
 
-    
-@app.route('/gptdemo', methods=['GET', 'POST'])
-def gptdemo():
-    ''' handle a get request by sending a form 
-        and a post request by returning the GPT response
-    '''
-    if request.method == 'POST':
-        prompt = request.form['prompt']
-        answer = gptAPI.getResponse(prompt)
-        return f'''
-        <h1>GPT Demo</h1>
-        <pre style="bgcolor:yellow">{prompt}</pre>
-        <hr>
-        Here is the answer in text mode:
-        <div style="border:thin solid black">{answer}</div>
-        Here is the answer in "pre" mode:
-        <pre style="border:thin solid black">{answer}</pre>
-        <a href={url_for('gptdemo')}> make another query</a>
-        '''
-    else:
-        return '''
-        <h1>GPT Demo App</h1>
-        Enter your query below
-        <form method="post">
-            <textarea name="prompt"></textarea>
-            <p><input type=submit value="get response">
-        </form>
-        '''
 
 if __name__ == '__main__':
     # run the code on port 5001, MacOS uses port 5000 for its own service :(

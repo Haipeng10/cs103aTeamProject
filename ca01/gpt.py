@@ -45,12 +45,13 @@ class GPT():
 
         response = completion.choices[0].text
         return response
-    
+
     def refactor(self, code):
         '''
         Refactor this code to make it work the same way as the original code.
         '''
-        task = 'Help me convert the code in another way, but does the same thing! (just show me the code with comments, no extra words)\n'
+        task = 'Help me convert the code in another way, but does the same thing! (just \
+            show me the code with comments, no extra words)\n'
         completion = openai.Completion.create(
             engine=self.model_engine,
             prompt=task+code,
@@ -68,7 +69,8 @@ class GPT():
         Add comments to the code.
         Return the commented code.
         '''
-        prefix = 'Add comments to below code: (just show me the code with comments, no extra words)\n'
+        prefix = 'Add comments to below code: (just show me the code with \
+            comments, no extra words)\n'
         completion = openai.Completion.create(
             engine=self.model_engine,
             prompt=prefix + code,
@@ -80,8 +82,8 @@ class GPT():
 
         response = completion.choices[0].text
         return response
-    
-    def getResponseForTimeComplexity(self,prompt):
+
+    def get_response_for_time_complexity(self,prompt):
         ''' 
         return the time complexity of the input code
         '''
@@ -98,9 +100,24 @@ class GPT():
         response = completion.choices[0].text
         return response
 
+    def change_code_language(self, target_language, code):
+        '''
+        Change the code language to another language.
+        '''
+        prefix = 'Change the code language to '
+        completion = openai.Completion.create(
+            engine=self.model_engine,
+            prompt=prefix + target_language + ':\n' + code,
+            max_tokens=1024,
+            n=1,
+            stop=None,
+            temperature=0.8,
+        )
+
+        response = completion.choices[0].text
+        return response
+
 if __name__=='__main__':
-    '''
-    '''
     import os
-    g = GPT()
+    g = GPT(os.environ.get("APIKEY"))
     print(g.getResponse("what does openai's GPT stand for?"))
